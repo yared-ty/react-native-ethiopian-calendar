@@ -20,7 +20,31 @@ async function prepareIcons() {
 
 async function startApp() {
   const icons = await prepareIcons();
-  Navigation.startSingleScreenApp({
+
+Navigation.setRoot({
+  root: {
+    stack: {
+      children: [{
+        component: {
+          name: 'Ethcal.calendar',
+          passProps: {
+            text: 'stack with one child'
+          }
+        }
+      }],
+      options: {
+        topBar: {
+          title: {
+            text: translate('CALENDAR_title')
+          }
+        }
+      }
+    }
+  }
+});
+
+
+/*Navigation.startSingleScreenApp({
     screen: {
         screen: 'Ethcal.calendar',
         title: translate('CALENDAR_title'),
@@ -41,7 +65,7 @@ async function startApp() {
         screen: 'Ethcal.drawer'
       }
     }
-  })
+  })*/
 }
 registerScreens();
 task_init();
